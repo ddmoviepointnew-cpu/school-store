@@ -3,175 +3,196 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#155eef">
-<title>School Store | Student Essentials</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SchoolHub</title>
 <style>
-:root{--blue:#155eef;--dark:#14213d;--bg:#f3f6fc;--green:#12834a}
+:root{--blue:#2446a6;--navy:#172554;--pale:#eef3ff;--ink:#172033;--muted:#657087;--line:#e1e6ef;--green:#16834a}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--dark)}
-header{background:linear-gradient(135deg,#155eef,#6539c8);color:white;padding:25px 18px 32px}
-nav,main{max-width:1000px;margin:auto}
-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:22px;font-weight:bold}
-nav a{color:white;text-decoration:none;font-size:14px}
-.hero{padding:32px 0 12px}
-.hero h1{font-size:36px;line-height:1.15;margin:0 0 12px}
-.hero p{line-height:1.6;max-width:500px}
-.pill{display:inline-block;background:#ffffff25;padding:8px 12px;border-radius:30px;font-size:13px}
-main{padding:22px 15px 45px}
-.section-title{font-size:23px;margin:18px 0}
-.search{width:100%;padding:14px;border:1px solid #d5dceb;border-radius:12px;font-size:16px;margin-bottom:18px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.product,.panel{background:white;border-radius:15px;padding:16px;box-shadow:0 4px 15px #14213d0b}
-.emoji{font-size:42px}
-.product h3{font-size:16px;margin:12px 0 7px}
-.price{font-size:20px;font-weight:bold;margin:8px 0 13px}
-button{border:0;border-radius:9px;padding:12px;background:var(--blue);color:white;font-size:14px;font-weight:bold;cursor:pointer}
-.product button{width:100%}
-.panel{margin-top:22px;padding:19px}
-label{display:block;font-weight:bold;font-size:14px;margin:13px 0 6px}
-input,textarea{width:100%;padding:12px;border:1px solid #ccd5e4;border-radius:9px;font:inherit;background:white}
-textarea{min-height:85px;resize:vertical}
-.cart-line{padding:9px 0;border-bottom:1px solid #edf0f5;line-height:1.6}
-.cart-line button{padding:5px 10px;margin-left:5px;background:#e8eefb;color:#14213d}
-.total{font-size:21px;font-weight:bold;margin:17px 0}
-.order-buttons{display:grid;gap:10px;margin-top:18px}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f8fc;color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1100px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:25px;color:var(--blue);letter-spacing:-.7px}
+.nav button,.btn{border:0;border-radius:12px;background:var(--blue);color:white;font-weight:700;padding:11px 15px;cursor:pointer}
+.hero{max-width:1100px;margin:22px auto 0;padding:30px 22px;border-radius:22px;background:linear-gradient(120deg,#eaf0ff,#fff5df);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.08;margin:0 0 10px;color:var(--navy)}
+.hero p{color:#526078;line-height:1.5;margin:0 0 16px}
+.hero-icon{font-size:65px}
+main{max-width:1100px;margin:26px auto;padding:0 18px 40px}
+.section-head{margin:28px 0 14px}
+.section-head h2{margin:0;font-size:23px}
+.section-head p{color:var(--muted);font-size:14px}
+.categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.category{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:14px;color:var(--ink)}
+.category.active{border:2px solid var(--blue);background:var(--pale)}
+.cat-icon{font-size:35px}
+.category strong,.category small{display:block}
+.category small{color:var(--muted);margin-top:4px}
+.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;background:white;border:1px solid var(--line);padding:15px;border-radius:16px;margin:14px 0}
+label{font-size:13px;font-weight:700;color:#4c566d;display:block;margin-bottom:6px}
+select,input,textarea{width:100%;border:1px solid #cfd6e3;border-radius:10px;padding:11px;background:white;color:var(--ink);font:inherit}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:white;border:1px solid var(--line);border-radius:17px;padding:14px;display:flex;flex-direction:column;gap:9px}
+.product-art{height:100px;border-radius:12px;background:#f0f4ff;display:flex;align-items:center;justify-content:center;font-size:52px}
+.card h3{font-size:16px;margin:0}
+.desc{font-size:13px;color:var(--muted);margin:0}
+.price{font-size:20px;font-weight:800;color:var(--navy)}
+.card .btn{width:100%;margin-top:auto}
+.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:24px}
+.panel h2{margin:0 0 14px;font-size:22px}
+.cart-empty{color:var(--muted);font-size:14px}
+.cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-row small{display:block;color:var(--muted);margin-top:4px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{border:1px solid var(--line);background:#f7f8fc;border-radius:8px;padding:5px 9px}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:20px;padding-top:15px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.full{grid-column:1/-1}
+.payment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.payment-option{border:1px solid var(--line);border-radius:12px;padding:13px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.payment-option input{width:auto}
+.note{font-size:13px;line-height:1.5;color:var(--muted);background:#f7f8fc;padding:12px;border-radius:10px;margin:12px 0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.secondary{background:#eef2ff;color:var(--blue)}
 .whatsapp{background:var(--green)}
-.email{background:#14213d}
-.note{font-size:12px;line-height:1.6;color:#626d80}
-.contact{margin-top:22px;text-align:center;line-height:1.9;overflow-wrap:anywhere}
-.contact a{color:var(--blue)}
-footer{text-align:center;padding:23px 15px;background:#14213d;color:white;font-size:13px;line-height:1.8}
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{font-size:46px}.panel{padding:25px}}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px}
+.hidden{display:none!important}
+@media(max-width:700px){.hero{margin:14px 12px 0;padding:22px 18px}main{padding:0 12px 30px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.controls,.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.categories{grid-template-columns:1fr}}
+@media(max-width:390px){.products{grid-template-columns:1fr}.payment-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-<nav>
-<div class="logo">🎒 School Store</div>
-<a href="#products">Shop Products ↓</a>
-</nav>
-<div class="hero">
-<span class="pill">Everything for students</span>
-<h1>School Essentials,<br>All in One Place!</h1>
-<p>Discover school bags, notebooks, stationery and more. Choose your products and order directly with us.</p>
-</div>
-</header>
+<header><div class="nav"><div class="brand">SchoolHub</div><button onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">🛒 Cart (<span id="cartCount">0</span>)</button></div></header>
 
-<main>
-<h2 class="section-title" id="products">🛍️ Shop Products</h2>
-<input class="search" id="search" placeholder="Search bags, notebooks, pens..." oninput="renderProducts()">
-<div class="grid" id="productsGrid"></div>
-
-<section class="panel" id="order">
-<h2>🛒 Your Shopping Cart</h2>
-<div id="cart">Your cart is empty. Add a product to get started.</div>
-<div class="total" id="total">Total: ₹0</div>
-<p class="note">Prices displayed are sample prices and must be confirmed with the seller.</p>
-
-<h2 class="section-title">📍 Delivery Details</h2>
-<label for="customer">Your full name *</label>
-<input id="customer" placeholder="Enter your name" autocomplete="name">
-<label for="phone">Your mobile number *</label>
-<input id="phone" type="tel" placeholder="10-digit mobile number" autocomplete="tel">
-<label for="address">Full delivery address *</label>
-<textarea id="address" placeholder="House number, street, landmark"></textarea>
-<label for="area">Area / City *</label>
-<input id="area" placeholder="e.g. Palghar">
-<label for="pin">PIN code *</label>
-<input id="pin" inputmode="numeric" maxlength="6" placeholder="6-digit PIN code">
-<label for="notes">Extra instructions (optional)</label>
-<textarea id="notes" placeholder="Quantity requests or other products"></textarea>
-
-<div class="order-buttons">
-<button class="whatsapp" onclick="sendWhatsApp()">Order on WhatsApp</button>
-<button class="email" onclick="sendEmail()">Send Order by Email</button>
-</div>
-<p class="note">Your order opens WhatsApp or your email app for you to send. No payment is collected on this website. Delivery and final prices will be confirmed by the seller.</p>
+<section class="hero">
+<div><h1>Everything for<br>your school day.</h1><p>School uniforms, stationery and everyday essentials — all in one place.</p><button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop products</button></div>
+<div class="hero-icon">🎒📚</div>
 </section>
 
-<div class="contact">
-<h2>Contact Us</h2>
-<p>WhatsApp: <a href="https://wa.me/918600621938">8600621938</a></p>
-<p>Email: <a href="mailto:dipak8600sharma@gmail.com">dipak8600sharma@gmail.com</a></p>
+<main>
+<section id="shop">
+<div class="section-head"><h2>What are you looking for?</h2><p>Choose a category to get started.</p></div>
+<div class="categories">
+<button class="category active" id="uniformCat" onclick="setCategory('uniform')"><span class="cat-icon">👔</span><span><strong>School Dress</strong><small>Choose school, uniform and size</small></span></button>
+<button class="category" id="stationeryCat" onclick="setCategory('stationery')"><span class="cat-icon">✏️</span><span><strong>School Supplies</strong><small>Notebooks and stationery</small></span></button>
 </div>
-</main>
 
-<footer>
-<strong>🎒 School Store</strong><br>
-Your student essentials store<br>
-Orders are confirmed directly by our team.
-</footer>
+<div id="uniformControls" class="controls">
+<div><label for="school">Select school</label><select id="school"><option>School A</option><option>School B</option><option>School C</option></select></div>
+<div><label for="dressSize">Select size</label><select id="dressSize"><option>20</option><option>22</option><option>24</option><option>26</option><option>28</option><option>30</option><option>32</option><option>34</option><option>36</option><option>38</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option></select></div>
+<div><label for="dressType">Dress type</label><select id="dressType"><option>Full Uniform Set</option><option>Shirt</option><option>Trousers</option><option>Skirt</option><option>Sports / PT Uniform</option><option>Tie</option><option>Belt</option><option>Socks</option></select></div>
+</div>
+
+<div class="section-head"><h2 id="productHeading">School Uniforms</h2><p>Sample prices — replace with your actual prices.</p></div>
+<div class="products" id="products"></div>
+</section>
+
+<section class="panel" id="cart">
+<h2>🛒 Your Cart</h2><div id="cartItems" class="cart-empty">Your cart is empty. Add a product to begin.</div>
+<div class="total"><span>Total</span><span id="cartTotal">₹0</span></div>
+</section>
+
+<section class="panel" id="checkout">
+<h2>📦 Delivery details</h2>
+<form id="orderForm">
+<div class="form-grid">
+<div><label for="customerName">Full name *</label><input id="customerName" required placeholder="Your name" autocomplete="name"></div>
+<div><label for="phone">Mobile number *</label><input id="phone" required inputmode="tel" pattern="[0-9 +()-]{10,16}" placeholder="Mobile number"></div>
+<div class="full"><label for="address">Full delivery address *</label><textarea id="address" required rows="2" placeholder="House no., street, landmark"></textarea></div>
+<div><label for="area">Area / City *</label><input id="area" required placeholder="Your area or city"></div>
+<div><label for="pin">PIN code *</label><input id="pin" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6-digit PIN code"></div>
+</div>
+
+<h2 style="margin-top:24px">💳 Payment method</h2>
+<div class="payment-grid">
+<label class="payment-option"><input type="radio" name="payment" value="UPI" checked> 📱 UPI</label>
+<label class="payment-option"><input type="radio" name="payment" value="Debit / Credit Card"> 💳 Debit / Credit Card</label>
+<label class="payment-option"><input type="radio" name="payment" value="Net Banking"> 🏦 Net Banking</label>
+<label class="payment-option"><input type="radio" name="payment" value="Direct Bank Transfer"> 🏛️ Direct Bank Transfer</label>
+<label class="payment-option"><input type="radio" name="payment" value="Cash on Delivery"> 💵 Cash on Delivery</label>
+</div>
+<div class="note">Payment selection is only a preference. This website does not process online payments yet. A secure payment gateway is required for UPI, cards and net banking. Never enter your card PIN, CVV or OTP here.</div>
+<div class="actions"><button type="button" class="btn whatsapp" onclick="sendOrder()">Send order on WhatsApp</button><button type="button" class="btn secondary" onclick="sendEmail()">Order by email</button></div>
+</form>
+</section>
+</main>
+<footer>© <span id="year"></span> SchoolHub · School essentials made simple</footer>
 
 <script>
-const products=[
-{id:1,name:"School Bag",price:499,emoji:"🎒"},
-{id:2,name:"Notebooks",price:50,emoji:"📚"},
-{id:3,name:"Pen & Pencil Set",price:40,emoji:"✏️"},
-{id:4,name:"Colour Set",price:80,emoji:"🎨"},
-{id:5,name:"Geometry Box",price:120,emoji:"📐"},
-{id:6,name:"Lunch Box",price:199,emoji:"🍱"},
-{id:7,name:"Water Bottle",price:149,emoji:"🥤"},
-{id:8,name:"School Art Kit",price:99,emoji:"🖍️"},
-{id:9,name:"Pencil Pouch",price:79,emoji:"🖊️"}
-];
-const cart={};
+const WHATSAPP_NUMBER="918600621938";
+const ORDER_EMAIL="dipak8600sharma@gmail.com";
 
-function renderProducts(){
-const q=document.getElementById("search").value.toLowerCase();
-document.getElementById("productsGrid").innerHTML=products
-.filter(p=>p.name.toLowerCase().includes(q))
-.map(p=>`<article class="product">
-<div class="emoji">${p.emoji}</div><h3>${p.name}</h3>
-<div class="price">₹${p.price}</div>
-<button onclick="add(${p.id})">Add to Cart +</button>
-</article>`).join("");
+const uniformProducts=[
+{id:"uniform-set",name:"Full Uniform Set",price:650,icon:"👔",type:"Full Uniform Set",sized:true},
+{id:"shirt",name:"School Shirt",price:250,icon:"👕",type:"Shirt",sized:true},
+{id:"trousers",name:"School Trousers",price:350,icon:"👖",type:"Trousers",sized:true},
+{id:"skirt",name:"School Skirt",price:300,icon:"🎽",type:"Skirt",sized:true},
+{id:"pt-uniform",name:"Sports / PT Uniform",price:450,icon:"🏃",type:"Sports / PT Uniform",sized:true},
+{id:"tie",name:"School Tie",price:100,icon:"👔",type:"Tie",sized:false},
+{id:"belt",name:"School Belt",price:120,icon:"〰️",type:"Belt",sized:false},
+{id:"socks",name:"School Socks",price:80,icon:"🧦",type:"Socks",sized:true}
+];
+const stationeryProducts=[
+{id:"notebook",name:"Notebook",price:40,icon:"📓"},
+{id:"stationery-kit",name:"Stationery Kit",price:120,icon:"✏️"},
+{id:"school-bag",name:"School Bag",price:450,icon:"🎒"},
+{id:"water-bottle",name:"Water Bottle",price:150,icon:"🧴"},
+{id:"geometry-box",name:"Geometry Box",price:100,icon:"📐"},
+{id:"lunch-box",name:"Lunch Box",price:180,icon:"🍱"}
+];
+let category="uniform",cart=[];
+function money(n){return "₹"+Number(n).toLocaleString("en-IN")}
+function setCategory(value){
+category=value;
+document.getElementById("uniformCat").classList.toggle("active",value==="uniform");
+document.getElementById("stationeryCat").classList.toggle("active",value==="stationery");
+document.getElementById("uniformControls").classList.toggle("hidden",value!=="uniform");
+document.getElementById("productHeading").textContent=value==="uniform"?"School Uniforms":"School Supplies";
+renderProducts();
 }
-function add(id){cart[id]=(cart[id]||0)+1;renderCart()}
-function change(id,amount){
-cart[id]=(cart[id]||0)+amount;
-if(cart[id]<=0)delete cart[id];
+function renderProducts(){
+const list=category==="uniform"?uniformProducts:stationeryProducts;
+document.getElementById("products").innerHTML=list.map(p=>`<article class="card"><div class="product-art">${p.icon}</div><h3>${p.name}</h3><p class="desc">${p.type||"School essential"}</p><div class="price">${money(p.price)}</div><button class="btn" onclick="addToCart('${p.id}')">Add to cart</button></article>`).join("");
+}
+function addToCart(id){
+const p=[...uniformProducts,...stationeryProducts].find(x=>x.id===id);if(!p)return;
+const school=category==="uniform"?document.getElementById("school").value:"";
+const type=category==="uniform"?document.getElementById("dressType").value:"";
+const size=category==="uniform"&&p.sized?document.getElementById("dressSize").value:"";
+const key=[id,school,size,type].join("|");
+const found=cart.find(x=>x.key===key);
+if(found)found.qty++;else cart.push({...p,key,school,size,type,qty:1});
 renderCart();
 }
-function renderCart(){
-const items=products.filter(p=>cart[p.id]);
-document.getElementById("cart").innerHTML=items.length?items.map(p=>
-`<div class="cart-line"><strong>${p.name}</strong><br>
-₹${p.price} × ${cart[p.id]} = ₹${p.price*cart[p.id]}
-<button onclick="change(${p.id},-1)">−</button>
-<button onclick="change(${p.id},1)">+</button></div>`
-).join(""):"Your cart is empty. Add a product to get started.";
-document.getElementById("total").textContent="Total: ₹"+
-items.reduce((sum,p)=>sum+p.price*cart[p.id],0);
+function changeQty(key,delta){
+const item=cart.find(x=>x.key===key);if(!item)return;
+item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.key!==key);renderCart();
 }
-function getOrder(){
-const items=products.filter(p=>cart[p.id]);
-if(!items.length){alert("Please add a product to your cart.");return null}
-const customer=document.getElementById("customer").value.trim();
+function renderCart(){
+const holder=document.getElementById("cartItems");
+document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
+document.getElementById("cartTotal").textContent=money(cart.reduce((a,x)=>a+x.price*x.qty,0));
+if(!cart.length){holder.className="cart-empty";holder.textContent="Your cart is empty. Add a product to begin.";return}
+holder.className="";
+holder.innerHTML=cart.map(x=>`<div class="cart-row"><div><strong>${x.name}</strong><small>${x.school?x.school+" · ":""}${x.type?x.type+" · ":""}${x.size?"Size "+x.size+" · ":""}${money(x.price)} each</small></div><div class="qty"><button type="button" onclick="changeQty('${x.key}',-1)">−</button><span>${x.qty}</span><button type="button" onclick="changeQty('${x.key}',1)">+</button></div></div>`).join("");
+}
+function orderText(){
+if(!cart.length){alert("Bhai, pehle cart mein product add kar.");return null}
+const form=document.getElementById("orderForm");if(!form.reportValidity())return null;
+const name=document.getElementById("customerName").value.trim();
 const phone=document.getElementById("phone").value.trim();
 const address=document.getElementById("address").value.trim();
 const area=document.getElementById("area").value.trim();
 const pin=document.getElementById("pin").value.trim();
-if(!customer||!phone||!address||!area||!/^\d{6}$/.test(pin)){
-alert("Please fill in your name, mobile number, address, area and valid 6-digit PIN code.");return null;
+const payment=document.querySelector('input[name="payment"]:checked').value;
+const lines=cart.map(x=>`- ${x.name}${x.school?" ("+x.school+")":""}${x.type?" · "+x.type:""}${x.size?" · Size "+x.size:""} × ${x.qty} = ${money(x.price*x.qty)}`).join("\n");
+const total=cart.reduce((a,x)=>a+x.price*x.qty,0);
+return `SCHOOLHUB ORDER\nCustomer: ${name}\nMobile: ${phone}\nAddress: ${address}, ${area}, PIN ${pin}\n\nItems:\n${lines}\n\nTotal (sample prices): ${money(total)}\nPayment preference: ${payment}\nPlease confirm availability, final price and payment instructions.`;
 }
-if(!/^[0-9+\s()-]{10,16}$/.test(phone)){
-alert("Please enter a valid mobile number.");return null;
-}
-const total=items.reduce((sum,p)=>sum+p.price*cart[p.id],0);
-return `SCHOOL STORE ORDER\nName: ${customer}\nCustomer phone: ${phone}\nDelivery address: ${address}\nArea/City: ${area}\nPIN code: ${pin}\nProducts:\n${items.map(p=>`${p.name} x ${cart[p.id]} = Rs ${p.price*cart[p.id]}`).join("\n")}\nEstimated total: Rs ${total}\nExtra instructions: ${document.getElementById("notes").value.trim()||"None"}\nPlease confirm product availability, final prices and delivery charges.`;
-}
-function sendWhatsApp(){
-const message=getOrder();if(!message)return;
-window.location.href="https://wa.me/918600621938?text="+encodeURIComponent(message);
-}
-function sendEmail(){
-const message=getOrder();if(!message)return;
-window.location.href="mailto:dipak8600sharma@gmail.com?subject="+encodeURIComponent("New School Store Order")+"&body="+encodeURIComponent(message);
-}
-renderProducts();
-renderCart();
+function sendOrder(){const msg=orderText();if(msg)window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank")}
+function sendEmail(){const msg=orderText();if(msg)window.location.href="mailto:"+ORDER_EMAIL+"?subject="+encodeURIComponent("SchoolHub order")+"&body="+encodeURIComponent(msg)}
+document.getElementById("year").textContent=new Date().getFullYear();
+renderProducts();renderCart();
 </script>
 </body>
 </html>
+
